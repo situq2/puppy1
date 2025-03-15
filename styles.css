@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+.puppy {
+    width: 50vw; /* 占满整个屏幕宽度 */
+    height: 50vh; /* 占满整个屏幕高度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.image-container {
+    position: relative;
+    width: 80%;
+    height: 80%;
+}
+
+.face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    object-fit: cover; /* 图片占满整个容器 */
+    opacity: 0;
+    transition: opacity 2s ease; /* 渐变效果 */
+}
+
+.face.active {
+    opacity: 1;
+}
