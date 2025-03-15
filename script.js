@@ -26,40 +26,51 @@ function switchImage(newSrc) {
 // 单击事件
 puppy.addEventListener('click', () => {
     const currentTime = new Date().getTime();
+    console.log("点击时间:", currentTime); // 打印点击时间
+    console.log("上次点击时间:", lastClickTime); // 打印上次点击时间
+    console.log("点击次数:", clickCount); // 打印点击次数
+
     if (currentTime - lastClickTime < 300) { // 快速点击
         clickCount++;
+        console.log("快速点击次数:", clickCount); // 打印快速点击次数
+
         if (isLocked) {
-            // 如果表情锁定，检查是否需要切换
+            console.log("当前表情已锁定"); // 打印锁定状态
             if (face1.src.includes("2.png") && clickCount === 2) {
-                switchImage("images/5.png"); // 从 2.png 切换到 5.png
-                clickCount = 0; // 重置点击计数
+                console.log("从 2.png 切换到 5.png"); // 打印切换逻辑
+                switchImage("images/5.png");
+                clickCount = 0;
             } else if (face1.src.includes("5.png") && clickCount === 2) {
-                switchImage("images/3.png"); // 从 5.png 切换到 3.png
-                clickCount = 0; // 重置点击计数
+                console.log("从 5.png 切换到 3.png"); // 打印切换逻辑
+                switchImage("images/3.png");
+                clickCount = 0;
             }
         } else {
-            // 如果未锁定，按原逻辑切换
+            console.log("当前表情未锁定"); // 打印锁定状态
             if (clickCount === 3) {
-                switchImage("images/2.png"); // 快速点击三下
-                isLocked = true; // 锁定表情
+                console.log("快速点击三下，切换到 2.png"); // 打印切换逻辑
+                switchImage("images/2.png");
+                isLocked = true;
             } else if (clickCount === 5) {
-                switchImage("images/5.png"); // 快速点击五下
-                isLocked = true; // 锁定表情
+                console.log("快速点击五下，切换到 5.png"); // 打印切换逻辑
+                switchImage("images/5.png");
+                isLocked = true;
             } else if (clickCount === 7) {
-                switchImage("images/3.png"); // 快速点击七下
-                isLocked = true; // 锁定表情
-                clickCount = 0; // 重置点击计数
+                console.log("快速点击七下，切换到 3.png"); // 打印切换逻辑
+                switchImage("images/3.png");
+                isLocked = true;
+                clickCount = 0;
             }
         }
     } else {
         if (!isLocked) {
-            switchImage("images/4.png"); // 单击
+            console.log("单击，切换到 4.png"); // 打印切换逻辑
+            switchImage("images/4.png");
         }
-        clickCount = 0; // 重置点击计数
+        clickCount = 0;
     }
     lastClickTime = currentTime;
 });
-
 // 抚摸开始事件
 puppy.addEventListener('touchstart', (e) => {
     e.preventDefault();
