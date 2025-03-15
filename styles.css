@@ -33,7 +33,7 @@ body {
     height: 100%;
     object-fit: cover; /* 图片占满整个容器 */
     opacity: 0;
-    transition: opacity 1s ease; /* 渐变效果 */
+    transition: opacity 2s ease; /* 渐变效果 */
 }
 
 .face.active {
